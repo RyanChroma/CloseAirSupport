@@ -71652,7 +71652,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1262569314}
-  - component: {fileID: 1262569315}
   m_Layer: 5
   m_Name: Mainmenu folder
   m_TagString: Untagged
@@ -71682,18 +71681,6 @@ RectTransform:
   m_AnchoredPosition: {x: -389.13, y: -484}
   m_SizeDelta: {x: 1130.3, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1262569315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262569313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aae97aa3ef893d64dbc19a1a1ea8ca9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1262786623
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,10 +26,18 @@ public class PlanePilot : MonoBehaviour
 		transform.position += transform.forward * Time.deltaTime * speed;
 		speed -= transform.forward.y * Time.deltaTime * 50.0f;
 
-		if(speed < 50.0f)
+		//SMARTER WAY OF SETTING MIN AND MAX SPEED
+		speed = Mathf.Clamp(speed, 50, 300);
+
+		/*if(speed < 50.0f)
 		{
 			speed = 50.0f;
 		}
+
+		if(speed > 300.0f)
+		{
+			speed = 300.0f;
+		}*/
 
 		//PLANE MOVEMENT
 		transform.Rotate(Input.GetAxis("Vertical"), 0.0f, -Input.GetAxis("Horizontal"));

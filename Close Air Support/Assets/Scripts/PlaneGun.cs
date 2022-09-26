@@ -89,8 +89,8 @@ public class PlaneGun : MonoBehaviour
 
         //FIND THE EXACT HIT POSITION USING A RAYCAST
 
-        // JUST A RAY THROUGH THE MIDDLE OF YOUR SCREEN
-        Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        // JUST A RAY THROUGH THE MIDDLE OF YOUR SCREEN (WE DO NOT NEED RAYCAST FOR AIRPLANE)
+        /*Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
         //CHECK IF RAY HITS SOMETHING
@@ -103,10 +103,10 @@ public class PlaneGun : MonoBehaviour
 		{
             //JUST A POINT FAR AWAY FROM THE PLAYER
             targetPoint = ray.GetPoint(75);
-		}
+		}*/
 
         //CALCULATE DIRECTION FROM ATTACKPOINT TO TARGETPOINT
-        Vector3 directionWithoutSpread = targetPoint - attackPoint.position;
+        //Vector3 directionWithoutSpread = targetPoint - attackPoint.position;
 
         //CALCULATE SPREAD
         float x = Random.Range(-spread, spread);
@@ -115,16 +115,16 @@ public class PlaneGun : MonoBehaviour
         //CALCULATE NEW DIRECTION WITH SPREAD
 
         //JUST ADD SPREAD TO LAST DIRECTION
-        Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0);
+        //Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0);
 
         //INSTANTIATE BULLET/PROJECTILE
-        GameObject currentBullet = Instantiate(bullet, attackPoint.position, Quaternion.identity);
+        GameObject currentBullet = Instantiate(bullet, attackPoint.position, attackPoint.rotation);
         //ROTATE BULLET TO SHOOT DIRECTION
-        currentBullet.transform.forward = directionWithoutSpread.normalized;
+        //currentBullet.transform.forward = directionWithoutSpread.normalized;
 
         //ADD FORCES TO BULLET
-        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
-        currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * shootForce, ForceMode.Impulse);
+        //currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
+        currentBullet.GetComponent<Rigidbody>().AddForce(attackPoint.transform.forward * shootForce, ForceMode.Impulse);
 
         //INSTANTIATE MUZZLE FLASH, IF YOU HAVE ONE
         if(muzzleFlash != null)

@@ -23,7 +23,7 @@ public class PlanePilot : MonoBehaviour
 	void Update()
 	{
 		//PLANE SPEED
-		//transform.position += transform.forward * Time.deltaTime * speed;
+		transform.position += transform.forward * Time.deltaTime * speed;
 		speed -= transform.forward.y * Time.deltaTime * 50.0f;
 
 		if(speed < 50.0f)

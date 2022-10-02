@@ -29,7 +29,19 @@ public class PlanePilot : MonoBehaviour
 		//SMARTER WAY OF SETTING MIN AND MAX SPEED
 		speed = Mathf.Clamp(speed, 50, 300);
 
-		/*if(speed < 50.0f)
+		//INCREASE/DECREASE PLANE SPEED
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
+			speed = speed + 1;
+		}
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            speed = speed - 1;
+        }
+
+
+        /*if(speed < 50.0f)
 		{
 			speed = 50.0f;
 		}
@@ -39,8 +51,8 @@ public class PlanePilot : MonoBehaviour
 			speed = 300.0f;
 		}*/
 
-		//PLANE MOVEMENT
-		transform.Rotate(Input.GetAxis("Vertical"), 0.0f, -Input.GetAxis("Horizontal"));
+        //PLANE MOVEMENT
+        transform.Rotate(Input.GetAxis("Vertical"), 0.0f, -Input.GetAxis("Horizontal"));
 
 		if(Input.GetKey(KeyCode.Q))
 		{
@@ -52,11 +64,11 @@ public class PlanePilot : MonoBehaviour
 			transform.Rotate(0f, turnWithoutTilt, 0f);
 		}
 
-		float terrainHeightWhereWeAre = Terrain.activeTerrain.SampleHeight(transform.position);
+		//float terrainHeightWhereWeAre = Terrain.activeTerrain.SampleHeight(transform.position);
 
-		if(terrainHeightWhereWeAre > transform.position.y)
+		/*if(terrainHeightWhereWeAre > transform.position.y)
 		{
 			transform.position = new Vector3(transform.position.x, terrainHeightWhereWeAre, transform.position.z);
-		}
+		}*/
 	}
 }
